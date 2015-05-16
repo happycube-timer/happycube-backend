@@ -26,7 +26,7 @@ blueprint = Blueprint('solves', __name__,  url_prefix='/api/v0/solves')
 
 
 @blueprint.route('/', methods = ['GET'])
-@jwt_required(debug=True)
+@jwt_required(debug=False)
 def index():
 
     solves = solve_service.all()

@@ -5,6 +5,6 @@ from happycube.users.models import User
 class UserService(BaseService):
     __model__ = User
 
-user = UserService()
+user_service = UserService()
 
 
