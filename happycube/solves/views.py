@@ -15,18 +15,11 @@ from happycube.solves.services import solve_service
 from happycube.solves.serializer import serialize
 
 import json
-# from happycube.assets.services import user, asset, pair
 
 blueprint = Blueprint('solves', __name__,  url_prefix='/api/v0/solves')
 
-
-#
-# PUBLIC METHODS
-#
-
-
 @blueprint.route('/', methods = ['GET'])
-@jwt_required(debug=True)
+@jwt_required()
 def index():
 
     solves = solve_service.all()
@@ -37,7 +30,7 @@ def index():
 
 
 @blueprint.route('/', methods = ['POST'])
-@jwt_required(debug=True)
+@jwt_required()
 def create():
     logger.info(request.get_json())
 

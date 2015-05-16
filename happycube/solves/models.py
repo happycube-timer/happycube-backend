@@ -19,4 +19,3 @@ class Solve(Model):
 
     def __repr__(self):
         return '<Solve({ellapsed_time!r})>'.format(ellapsed_time=self.ellapsed_time)
-

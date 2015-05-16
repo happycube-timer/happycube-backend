@@ -12,7 +12,7 @@ from happycube.extensions import (
     # admin,
 )
 
-from happycube import users, solves
+from happycube import users, solves, auth
 from happycube.errors import HTTPError
 # from happycube.database import db
 from happycube.log import logger
@@ -36,7 +36,7 @@ def create_app(config_object=ProdConfig):
 
 def register_extensions(app):
     # assets.init_app(app)
-    # bcrypt.init_app(app)
+    bcrypt.init_app(app)
     # cache.init_app(app) # uncomment to enable caching
     db.init_app(app)
     debug_toolbar.init_app(app)
@@ -50,6 +50,7 @@ def register_extensions(app):
 def register_blueprints(app):
     app.register_blueprint(users.views.blueprint)
     app.register_blueprint(solves.views.blueprint)
+    app.register_blueprint(auth.views.blueprint)
     return None
 
 
