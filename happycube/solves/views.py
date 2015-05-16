@@ -19,7 +19,7 @@ import json
 blueprint = Blueprint('solves', __name__,  url_prefix='/api/v0/solves')
 
 @blueprint.route('/', methods = ['GET'])
-@jwt_required(debug=False)
+@jwt_required()
 def index():
 
     solves = solve_service.all()
@@ -30,7 +30,7 @@ def index():
 
 
 @blueprint.route('/', methods = ['POST'])
-@jwt_required(debug=True)
+@jwt_required()
 def create():
     logger.info(request.get_json())
 

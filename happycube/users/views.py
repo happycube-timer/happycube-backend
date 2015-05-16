@@ -14,7 +14,7 @@ from happycube.decorators.auth import jwt_required
 blueprint = Blueprint('users', __name__,  url_prefix='/api/v0')
 
 @blueprint.route('/me/', methods = ['POST'])
-@jwt_required(debug=True)
+@jwt_required()
 def get_balance():
 
     ret = {

@@ -1,7 +1,7 @@
 from happycube.service import BaseService
 from happycube.users.services import user_service
 from happycube.errors import HTTPError
-from flask import g
+from flask import g, request
 import jwt
 
 
@@ -9,19 +9,15 @@ class AuthService(object):
 
     def get_authenticated_user(self, login, password):
         user = user_service.first(name=login)
-        if user.check_password(password):
+        if user and user.check_password(password):
             return user
         else:
             return None
 
 
-    def verify_jwt(self, debug):
+    def verify_jwt(self):
         """Does the actual work of verifying the JWT data in the current request.
         """
-        if debug:
-            g.user = user_service.get('1')
-            return
-
         auth = request.headers.get('Authorization', None)
 
         if auth is None:
