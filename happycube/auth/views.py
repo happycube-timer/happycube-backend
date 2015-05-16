@@ -9,17 +9,10 @@ from happycube.log import logger
 
 from happycube.decorators.validation import validate
 from happycube.decorators.rate_limit import limit
-# from happycube.decorators.auth import jwt_required
 
 from happycube.auth.services import auth_service
 
 blueprint = Blueprint('auth', __name__,  url_prefix='/api/v0/auth')
-
-
-#
-# PUBLIC METHODS
-#
-
 
 @blueprint.route('/login/', methods = ['POST'])
 def login():

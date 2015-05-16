@@ -15,15 +15,8 @@ from happycube.solves.services import solve_service
 from happycube.solves.serializer import serialize
 
 import json
-# from happycube.assets.services import user, asset, pair
 
 blueprint = Blueprint('solves', __name__,  url_prefix='/api/v0/solves')
-
-
-#
-# PUBLIC METHODS
-#
-
 
 @blueprint.route('/', methods = ['GET'])
 @jwt_required(debug=False)

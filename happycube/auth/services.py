@@ -56,5 +56,3 @@ class AuthService(object):
 
 
 auth_service = AuthService()
-
-

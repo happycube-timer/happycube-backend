@@ -6,5 +6,3 @@ class SolveService(BaseService):
     __model__ = Solve
 
 solve_service = SolveService()
-
-

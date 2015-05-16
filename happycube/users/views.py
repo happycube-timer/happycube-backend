@@ -11,15 +11,7 @@ from happycube.decorators.validation import validate
 from happycube.decorators.rate_limit import limit
 from happycube.decorators.auth import jwt_required
 
-# from happycube.assets.services import user, asset, pair
-
 blueprint = Blueprint('users', __name__,  url_prefix='/api/v0')
-
-
-#
-# PUBLIC METHODS
-#
-
 
 @blueprint.route('/me/', methods = ['POST'])
 @jwt_required(debug=True)

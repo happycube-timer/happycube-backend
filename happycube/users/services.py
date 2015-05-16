@@ -6,5 +6,3 @@ class UserService(BaseService):
     __model__ = User
 
 user_service = UserService()
-
-

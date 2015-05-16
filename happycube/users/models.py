@@ -32,4 +32,3 @@ class User(Model):
 
     def __repr__(self):
         return '<User({name!r})>'.format(name=self.name)
-
