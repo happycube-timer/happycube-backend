@@ -1,8 +1,7 @@
-from happycube.service import BaseService
 from happycube.solves.models import Solve
 
+def get_all_solves():
+    return Solve.all()
 
-class SolveService(BaseService):
-    __model__ = Solve
-
-solve_service = SolveService()
+def create_solve(payload):
+    Solve.create(**payload)
