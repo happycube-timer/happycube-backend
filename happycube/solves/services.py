@@ -1,7 +1,7 @@
 from happycube.solves.models import Solve
 
-def get_all_solves():
-    return Solve.all()
+def get_all_solves(user_id):
+    return Solve.find(user_id=user_id)
 
-def create_solve(payload):
-    Solve.create(**payload)
+def create_solve(**kwargs):
+    return Solve.create(**kwargs)

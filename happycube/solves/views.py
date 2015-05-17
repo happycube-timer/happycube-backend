@@ -11,8 +11,8 @@ from happycube.decorators.validation import validate
 from happycube.decorators.rate_limit import limit
 from happycube.decorators.auth import jwt_required
 
-from happycube.solves.services import get_all_solves, create_solve
-from happycube.solves.serializer import serialize
+from .services import get_all_solves, create_solve
+from .serializer import serialize
 
 import json
 
@@ -22,7 +22,7 @@ blueprint = Blueprint('solves', __name__,  url_prefix='/api/v0/solves')
 @jwt_required()
 def index():
 
-    solves = get_all_solves()
+    solves = get_all_solves(g.user.id)
 
     ret = [serialize(x) for x in solves]
 
@@ -32,12 +32,13 @@ def index():
 @blueprint.route('/', methods = ['POST'])
 @jwt_required()
 def create():
-    logger.info(request.get_json())
-
     payload = request.get_json()
-    payload['user_id'] = g.user.id
 
-    new_solve = create_solve(**payload)
+    new_solve = create_solve(
+        user_id=g.user.id,
+        scramble=payload['scramble'],
+        ellapsed_time=payload['ellapsed_time']
+    )
 
     return json.dumps(serialize(new_solve))
 
